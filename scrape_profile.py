@@ -176,6 +176,160 @@ class ProfileScraper:
             print(f"Markdown report saved to {output_file}")
         except Exception as e:
             print(f"Error creating markdown report: {e}")
+    
+    def create_jekyll_pages(self, results: Dict[str, Any]):
+        """
+        Create Jekyll-compatible markdown pages from scraped data.
+        
+        Args:
+            results: Dictionary containing scraped data
+        """
+        try:
+            # Create a comprehensive profile data page
+            self._create_profile_data_page(results)
+            
+            # Update the about page with scraped content
+            self._update_about_page(results)
+            
+            # Create individual notes from scraped sources
+            self._create_profile_notes(results)
+            
+            print("✓ Jekyll pages created successfully")
+        except Exception as e:
+            print(f"Error creating Jekyll pages: {e}")
+    
+    def _create_profile_data_page(self, results: Dict[str, Any]):
+        """Create a comprehensive profile data page."""
+        output_file = 'profile-data.md'
+        
+        with open(output_file, 'w', encoding='utf-8') as f:
+            # Jekyll front matter
+            f.write("---\n")
+            f.write("layout: page\n")
+            f.write("title: Profile Data\n")
+            f.write("permalink: /profile-data/\n")
+            f.write("---\n\n")
+            
+            f.write("# Profile Data\n\n")
+            f.write(f"*Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*\n\n")
+            f.write("This page contains aggregated profile information from various sources.\n\n")
+            
+            for source_name, data in results.items():
+                if data:
+                    f.write(f"## {source_name}\n\n")
+                    
+                    if data.get('description'):
+                        f.write(f"{data['description']}\n\n")
+                    
+                    f.write(f"**Source:** [{data.get('url', 'N/A')}]({data.get('url', '#')})\n\n")
+                    
+                    if data.get('headings'):
+                        f.write("### Key Sections\n\n")
+                        for heading in data['headings'][:10]:
+                            f.write(f"- {heading['text']}\n")
+                        f.write("\n")
+                    
+                    if data.get('content'):
+                        f.write("### Content\n\n")
+                        # Split content into paragraphs for better formatting
+                        content_lines = data['content'].split('\n')
+                        for line in content_lines[:50]:  # Limit lines
+                            if line.strip():
+                                f.write(f"{line}\n\n")
+                        if len(content_lines) > 50:
+                            f.write("*[Content truncated for brevity]*\n\n")
+                else:
+                    f.write(f"## {source_name}\n\n")
+                    f.write("*Content not available*\n\n")
+        
+        print(f"  - Created {output_file}")
+    
+    def _update_about_page(self, results: Dict[str, Any]):
+        """Update the about page with scraped profile information."""
+        output_file = 'about.md'
+        
+        # Check if we have any successful scrapes
+        has_data = any(data is not None for data in results.values())
+        
+        if not has_data:
+            print(f"  - Skipped updating {output_file} (no scraped data available)")
+            return
+        
+        with open(output_file, 'w', encoding='utf-8') as f:
+            # Jekyll front matter
+            f.write("---\n")
+            f.write("layout: page\n")
+            f.write("title: About\n")
+            f.write("permalink: /about/\n")
+            f.write("---\n\n")
+            
+            f.write("# About Me\n\n")
+            
+            # Add content from scraped sources
+            for source_name, data in results.items():
+                if data and data.get('description'):
+                    f.write(f"{data['description']}\n\n")
+                    break  # Use first available description
+            
+            f.write("## Profile Information\n\n")
+            f.write("This page aggregates information from my various online profiles:\n\n")
+            
+            for source_name, data in results.items():
+                if data:
+                    f.write(f"- **{source_name}**: [{data.get('url', 'N/A')}]({data.get('url', '#')})\n")
+            
+            f.write("\n")
+            f.write("For detailed profile data, visit the [Profile Data](/profile-data/) page.\n\n")
+            
+            f.write("## Contact\n\n")
+            f.write("Feel free to reach out through any of the profiles listed above.\n")
+        
+        print(f"  - Updated {output_file}")
+    
+    def _create_profile_notes(self, results: Dict[str, Any]):
+        """Create individual notes from scraped profile sources."""
+        notes_dir = '_notes'
+        
+        # Create notes directory if it doesn't exist
+        os.makedirs(notes_dir, exist_ok=True)
+        
+        for source_name, data in results.items():
+            if data:
+                # Create a filename from source name
+                filename = source_name.lower().replace(' ', '-').replace('.', '-')
+                output_file = os.path.join(notes_dir, f'{filename}.md')
+                
+                with open(output_file, 'w', encoding='utf-8') as f:
+                    # Jekyll front matter
+                    f.write("---\n")
+                    f.write(f"title: {data.get('title', source_name)}\n")
+                    f.write(f"date: {datetime.now().strftime('%Y-%m-%d')}\n")
+                    f.write(f"categories: [profile, scraped-content]\n")
+                    f.write("---\n\n")
+                    
+                    f.write(f"# {data.get('title', source_name)}\n\n")
+                    
+                    if data.get('description'):
+                        f.write(f"{data['description']}\n\n")
+                    
+                    f.write(f"**Source:** [{data.get('url')}]({data.get('url')})\n\n")
+                    f.write(f"*Scraped on: {data.get('scraped_at', 'N/A')}*\n\n")
+                    
+                    if data.get('headings'):
+                        f.write("## Sections\n\n")
+                        for heading in data['headings'][:15]:
+                            f.write(f"- {heading['text']}\n")
+                        f.write("\n")
+                    
+                    if data.get('content'):
+                        f.write("## Content\n\n")
+                        # Format content with proper line breaks
+                        content_lines = data['content'].split('\n')
+                        for line in content_lines[:100]:
+                            if line.strip():
+                                f.write(f"{line}\n\n")
+                
+                print(f"  - Created {output_file}")
 
 
 def main():
@@ -209,10 +363,19 @@ def main():
     scraper.save_results(results)
     scraper.create_markdown_report(results)
     
+    # Create Jekyll pages
+    print(f"\n{'='*60}")
+    print("Creating Jekyll pages...")
+    print(f"{'='*60}")
+    scraper.create_jekyll_pages(results)
+    
     print("\n✓ Scraping complete!")
     print("\nOutput files:")
     print("  - profile_data.json (JSON format)")
     print("  - PROFILE_DATA.md (Markdown format)")
+    print("  - profile-data.md (Jekyll page)")
+    print("  - about.md (Updated Jekyll page)")
+    print("  - _notes/*.md (Jekyll notes)")
 
 
 if __name__ == '__main__':
