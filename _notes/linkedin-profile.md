@@ -1,6 +1,6 @@
 ---
 title: William Forney | LinkedIn
-date: 2026-02-14
+date: 2026-02-15
 categories: [profile, scraped-content]
 ---
 
@@ -10,13 +10,7 @@ Professional with experience in data applications and cloud services.
 
 **Source:** [https://linkedin.com/in/wforney](https://linkedin.com/in/wforney)
 
-*Scraped on: 2026-02-14T18:14:29.344615*
-
-## Sections
-
-- William Forney
-- Experience
-- Skills
+*Scraped on: 2026-02-15T02:22:46.437759*
 
 ## Content
 

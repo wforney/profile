@@ -7,6 +7,13 @@ author: wforney
 markdown: kramdown
 theme: minima
 
+# Header navigation pages order
+header_pages:
+  - index.md
+  - about.md
+  - notes.md
+  - profile-data.md
+
 # Collections for organizing content
 collections:
   notes:
