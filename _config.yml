@@ -1,0 +1,27 @@
+# Site settings
+title: My Profile
+description: Personal profile and public notes
+author: wforney
+
+# Build settings
+markdown: kramdown
+theme: minima
+
+# Collections for organizing content
+collections:
+  notes:
+    output: true
+    permalink: /notes/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "notes"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
