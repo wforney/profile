@@ -133,6 +133,85 @@ class TestProfileScraper(unittest.TestCase):
             # Clean up
             if os.path.exists(temp_file):
                 os.remove(temp_file)
+    
+    def test_create_jekyll_pages(self):
+        """Test creating Jekyll pages from scraped data."""
+        import tempfile
+        import shutil
+        
+        test_data = {
+            'Test Site': {
+                'url': 'https://test.com',
+                'title': 'Test Site Title',
+                'description': 'Test description',
+                'headings': [
+                    {'level': 'h1', 'text': 'Main Heading'}
+                ],
+                'content': 'Test content here',
+                'scraped_at': '2026-02-15T00:00:00'
+            }
+        }
+        
+        # Create temporary directory for testing
+        temp_dir = tempfile.mkdtemp()
+        original_dir = os.getcwd()
+        
+        try:
+            os.chdir(temp_dir)
+            
+            # Create the scraper and generate pages
+            self.scraper.create_jekyll_pages(test_data)
+            
+            # Verify profile-data.md was created
+            self.assertTrue(os.path.exists('profile-data.md'))
+            with open('profile-data.md', 'r') as f:
+                content = f.read()
+            self.assertIn('---', content)  # Jekyll front matter
+            self.assertIn('layout: page', content)
+            self.assertIn('Test Site', content)  # Source name
+            self.assertIn('Test description', content)  # Description
+            
+            # Verify notes were created
+            self.assertTrue(os.path.exists('_notes'))
+            self.assertTrue(os.path.exists('_notes/test-site.md'))
+            with open('_notes/test-site.md', 'r') as f:
+                note_content = f.read()
+            self.assertIn('---', note_content)  # Jekyll front matter
+            self.assertIn('categories: [profile, scraped-content]', note_content)
+            self.assertIn('Test Site Title', note_content)  # Title in note
+            
+        finally:
+            os.chdir(original_dir)
+            shutil.rmtree(temp_dir)
+    
+    def test_create_jekyll_pages_with_no_data(self):
+        """Test creating Jekyll pages when scraping fails."""
+        import tempfile
+        import shutil
+        
+        test_data = {
+            'test_site': None
+        }
+        
+        # Create temporary directory for testing
+        temp_dir = tempfile.mkdtemp()
+        original_dir = os.getcwd()
+        
+        try:
+            os.chdir(temp_dir)
+            
+            # Create the scraper and generate pages
+            self.scraper.create_jekyll_pages(test_data)
+            
+            # Verify profile-data.md was created even with no data
+            self.assertTrue(os.path.exists('profile-data.md'))
+            with open('profile-data.md', 'r') as f:
+                content = f.read()
+            self.assertIn('Content not available', content)
+            
+        finally:
+            os.chdir(original_dir)
+            shutil.rmtree(temp_dir)
 
 
 if __name__ == '__main__':
