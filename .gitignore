@@ -396,6 +396,10 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
+# Scraped data files
+profile_data.json
+PROFILE_DATA.md
+
 # VS Code files for those working on multiple tools
 .vscode/*
 !.vscode/settings.json
