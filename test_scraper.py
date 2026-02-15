@@ -170,6 +170,8 @@ class TestProfileScraper(unittest.TestCase):
             self.assertIn('layout: page', content)
             self.assertIn('Test Site', content)  # Source name
             self.assertIn('Test description', content)  # Description
+            # Verify duplicate "Key Sections" is not present
+            self.assertNotIn('### Key Sections', content)
             
             # Verify notes were created
             self.assertTrue(os.path.exists('_notes'))
@@ -179,6 +181,8 @@ class TestProfileScraper(unittest.TestCase):
             self.assertIn('---', note_content)  # Jekyll front matter
             self.assertIn('categories: [profile, scraped-content]', note_content)
             self.assertIn('Test Site Title', note_content)  # Title in note
+            # Verify duplicate "Sections" list is not present
+            self.assertNotIn('## Sections', note_content)
             
         finally:
             os.chdir(original_dir)
