@@ -14,8 +14,9 @@ I'm a developer passionate about technology and continuous learning. This site s
 ## Quick Links
 
 - [About](/about)
+- [Profile Data](/profile-data)
 - [Notes](/notes)
 
 ## Recent Updates
 
-Check out my [notes](/notes) section for my latest writings and insights.
+Check out my [notes](/notes) section for my latest writings and insights, or view my aggregated [profile data](/profile-data) from various sources.

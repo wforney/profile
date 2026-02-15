@@ -6,23 +6,17 @@ permalink: /about/
 
 # About Me
 
-Welcome! I'm passionate about software development, technology, and continuous learning.
+Professional portfolio and profile of William Forney, a software engineer specializing in web development, cloud technologies, and open source contributions.
 
-## My Background
+## Profile Information
 
-[Add your background information here]
+This page aggregates information from my various online profiles:
 
-## Skills
+- **williamforney.com**: [https://williamforney.com](https://williamforney.com)
+- **LinkedIn Profile**: [https://linkedin.com/in/wforney](https://linkedin.com/in/wforney)
 
-- Software Development
-- [Add your skills here]
-
-## Interests
-
-- Technology
-- Learning
-- [Add your interests here]
+For detailed profile data, visit the [Profile Data](/profile-data/) page.
 
 ## Contact
 
-Feel free to reach out to me through GitHub.
+Feel free to reach out through any of the profiles listed above.
