@@ -14,6 +14,21 @@ This repository contains my personal profile page and public notes. It uses Mark
 - `_notes/` - Collection of note articles
 - `_config.yml` - Jekyll configuration
 
+## Web Scraper
+
+This repository also includes a Python web scraper to collect profile content from:
+- https://williamforney.com
+- https://linkedin.com/in/wforney
+
+See [SCRAPER_README.md](SCRAPER_README.md) for detailed instructions on using the scraper.
+
+### Quick Start
+
+```bash
+pip install -r requirements.txt
+python scrape_profile.py
+```
+
 ## Local Development
 
 To run this site locally:
