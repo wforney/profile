@@ -10,13 +10,7 @@ Professional with experience in data applications and cloud services.
 
 **Source:** [https://linkedin.com/in/wforney](https://linkedin.com/in/wforney)
 
-*Scraped on: 2026-02-15T02:21:54.781876*
-
-## Sections
-
-- William Forney
-- Experience
-- Skills
+*Scraped on: 2026-02-15T02:22:46.437759*
 
 ## Content
 

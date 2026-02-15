@@ -6,7 +6,7 @@ permalink: /profile-data/
 
 # Profile Data
 
-*Last updated: 2026-02-15 02:21:54*
+*Last updated: 2026-02-15 02:22:46*
 
 This page contains aggregated profile information from various sources.
 
@@ -15,12 +15,6 @@ This page contains aggregated profile information from various sources.
 Personal blog covering technology, programming, and daily musings.
 
 **Source:** [https://williamforney.com](https://williamforney.com)
-
-### Key Sections
-
-- William Forney
-- Recent Posts
-- About
 
 ### Content
 
@@ -41,12 +35,6 @@ Interests: Software development, cloud computing, open source contributions.
 Professional with experience in data applications and cloud services.
 
 **Source:** [https://linkedin.com/in/wforney](https://linkedin.com/in/wforney)
-
-### Key Sections
-
-- William Forney
-- Experience
-- Skills
 
 ### Content
 

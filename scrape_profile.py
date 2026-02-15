@@ -233,12 +233,6 @@ class ProfileScraper:
                     
                     f.write(f"**Source:** [{data.get('url', 'N/A')}]({data.get('url', '#')})\n\n")
                     
-                    if data.get('headings'):
-                        f.write("### Key Sections\n\n")
-                        for heading in data['headings'][:10]:
-                            f.write(f"- {heading['text']}\n")
-                        f.write("\n")
-                    
                     if data.get('content'):
                         f.write("### Content\n\n")
                         # Split content into paragraphs for better formatting
@@ -324,12 +318,6 @@ class ProfileScraper:
                     
                     f.write(f"**Source:** [{data.get('url')}]({data.get('url')})\n\n")
                     f.write(f"*Scraped on: {data.get('scraped_at', 'N/A')}*\n\n")
-                    
-                    if data.get('headings'):
-                        f.write("## Sections\n\n")
-                        for heading in data['headings'][:15]:
-                            f.write(f"- {heading['text']}\n")
-                        f.write("\n")
                     
                     if data.get('content'):
                         f.write("## Content\n\n")

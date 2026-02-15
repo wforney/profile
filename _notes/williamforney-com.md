@@ -10,13 +10,7 @@ Personal blog covering technology, programming, and daily musings.
 
 **Source:** [https://williamforney.com](https://williamforney.com)
 
-*Scraped on: 2026-02-15T02:21:54.781863*
-
-## Sections
-
-- William Forney
-- Recent Posts
-- About
+*Scraped on: 2026-02-15T02:22:46.437746*
 
 ## Content
 
