@@ -1,91 +1,34 @@
 ---
-title: William Forney - Software Engineer & Developer
-date: 2026-02-15
+title: William Forney
+date: 2026-02-14
 categories: [profile, scraped-content]
 ---
 
-# William Forney - Software Engineer & Developer
+# William Forney
 
-Professional portfolio and profile of William Forney, a software engineer specializing in web development, cloud technologies, and open source contributions.
+Personal blog covering technology, programming, and daily musings.
 
 **Source:** [https://williamforney.com](https://williamforney.com)
 
-*Scraped on: 2026-02-15T01:56:21.488927*
+*Scraped on: 2026-02-14T18:14:29.344499*
 
 ## Sections
 
 - William Forney
-- About Me
-- Skills & Expertise
-- Programming Languages
-- Frameworks & Technologies
-- Professional Experience
-- Senior Software Engineer
-- Software Developer
-- Projects
-- Open Source Contributions
-- Education
-- Contact Information
+- Recent Posts
+- About
 
 ## Content
 
 William Forney
 
-Software Engineer & Developer
+Personal blog and notes.
 
-About Me
+About
 
-I am a passionate software engineer with extensive experience in building scalable web applications, cloud infrastructure, and enterprise software solutions. My expertise spans across multiple programming languages and modern development frameworks.
+I live in Mount Vernon, WA, and work on data applications and pipelines at Starbucks, handling cloud services to move data from store registers to backend systems. I enjoy programming, technology, and sharing insights on .NET, web development, and more.
 
-Skills & Expertise
+Recent work includes updating shared code NuGet packages for .NET 9, and past projects with Aurelia, ASP.NET Core, and Windows development.
 
-Programming Languages
-
-- Python (Advanced)
-
-- JavaScript/TypeScript (Advanced)
-
-- C# .NET (Proficient)
-
-- Java (Proficient)
-
-- Go (Intermediate)
-
-Frameworks & Technologies
-
-- React, Angular, Vue.js
-
-- Node.js, Express
-
-- Django, Flask
-
-- Docker, Kubernetes
-
-- AWS, Azure, GCP
-
-- PostgreSQL, MongoDB
-
-Professional Experience
-
-Senior Software Engineer
-
-Leading development of cloud-native applications using microservices architecture. Implementing CI/CD pipelines and infrastructure as code. Mentoring junior developers and conducting code reviews.
-
-Software Developer
-
-Developed full-stack web applications using modern JavaScript frameworks. Collaborated with cross-functional teams to deliver high-quality software solutions.
-
-Projects
-
-Open Source Contributions
-
-Active contributor to various open source projects including web frameworks, developer tools, and documentation improvements.
-
-Education
-
-Bachelor's degree in Computer Science with a focus on software engineering and distributed systems.
-
-Contact Information
-
-Feel free to reach out via GitHub, LinkedIn, or email for collaboration opportunities.
+Interests: Software development, cloud computing, open source contributions.
 

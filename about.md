@@ -6,7 +6,7 @@ permalink: /about/
 
 # About Me
 
-Professional portfolio and profile of William Forney, a software engineer specializing in web development, cloud technologies, and open source contributions.
+Personal blog covering technology, programming, and daily musings.
 
 ## Profile Information
 

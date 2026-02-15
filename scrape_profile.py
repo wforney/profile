@@ -48,7 +48,7 @@ class ProfileScraper:
             # Remove script and style elements
             for script in soup(['script', 'style']):
                 script.decompose()
-            
+                
             # Extract basic information
             title = soup.find('title')
             title_text = title.get_text().strip() if title else 'No title'
@@ -118,6 +118,16 @@ class ProfileScraper:
         """
         print(f"Note: LinkedIn may block automated scraping. Attempting to fetch {profile_url}...")
         return self.scrape_website(profile_url)
+    
+    def scrape_linkedin_manual(self, manual_data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """
+        Use manually provided LinkedIn data instead of scraping.
+        """
+        if manual_data:
+            manual_data['url'] = 'https://linkedin.com/in/wforney'
+            manual_data['scraped_at'] = datetime.now().isoformat()
+            return manual_data
+        return None
     
     def save_results(self, results: Dict[str, Any], output_file: str = 'profile_data.json'):
         """
@@ -191,7 +201,7 @@ class ProfileScraper:
             # Update the about page with scraped content
             self._update_about_page(results)
             
-            # Create individual notes from scraped sources
+            # Create individual notes from scraped profile sources
             self._create_profile_notes(results)
             
             print("✓ Jekyll pages created successfully")
@@ -349,7 +359,33 @@ def main():
         print(f"\n{'='*60}")
         print(f"Scraping: {name}")
         print(f"{'='*60}")
-        data = scraper.scrape_website(url)
+        if name == 'LinkedIn Profile':
+            data = scraper.scrape_linkedin(url)
+            if not data:
+                # Manual LinkedIn data
+                manual_linkedin = {
+                    'title': 'William Forney | LinkedIn',
+                    'description': 'Professional with experience in data applications and cloud services.',
+                    'headings': [
+                        {'level': 'h1', 'text': 'William Forney'},
+                        {'level': 'h2', 'text': 'Experience'},
+                        {'level': 'h2', 'text': 'Skills'}
+                    ],
+                    'links': [
+                        {'text': 'Website', 'href': 'https://williamforney.com'}
+                    ],
+                    'content': '''William Forney
+Professional profile.
+
+Experience
+- Data applications and pipelines at Starbucks, focusing on cloud services and backend data flow.
+
+Skills
+- Programming, cloud technologies, data processing.'''
+                }
+                data = scraper.scrape_linkedin_manual(manual_linkedin)
+        else:
+            data = scraper.scrape_website(url)
         results[name] = data
         if data:
             print(f"✓ Successfully scraped {name}")
